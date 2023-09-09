@@ -6,7 +6,8 @@
 	"scripts": {
 		"lint": "eslint src",
 		"test": "jest",
-		"build": "microbundle",
+		"bundle": "microbundle",
+		"build": "run-s lint test bundle",
 		"dev": "microbundle watch"
 	},
 	"devDependencies": {
@@ -19,6 +20,7 @@
 		"jest": "^29.6.4",
 		"jest-environment-jsdom": "^29.6.4",
 		"microbundle": "^0.15.1",
+		"npm-run-all": "^4.1.5",
 		"prettier": "^3.0.3",
 		"ts-jest": "^29.1.1",
 		"typescript": "^5.2.2"

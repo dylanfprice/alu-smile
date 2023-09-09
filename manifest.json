@@ -6,7 +6,7 @@
 	"content_scripts": [
 		{
 			"js": [
-				"dist/alu-smile.modern.mjs"
+				"dist/alu-smile.esm.js"
 			],
 			"matches": [
 				"https://www.amazon.com/gp/buy/*"
