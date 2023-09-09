@@ -1,0 +1,16 @@
+{
+	"manifest_version": 3,
+	"name": "ALU Smile",
+	"version": "1.0",
+	"description": "TODO",
+	"content_scripts": [
+		{
+			"js": [
+				"dist/alu-smile.modern.mjs"
+			],
+			"matches": [
+				"https://www.amazon.com/gp/buy/*"
+			]
+		}
+	]
+}
