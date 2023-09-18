@@ -3,10 +3,15 @@
 	"name": "ALU Smile",
 	"version": "1.0",
 	"description": "TODO",
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "alu-smile@example.com"
+		}
+	},
 	"content_scripts": [
 		{
 			"js": [
-				"dist/alu-smile.esm.js"
+				"./dist/alu-smile.modern.mjs"
 			],
 			"matches": [
 				"https://www.amazon.com/gp/buy/*"
