@@ -1,4 +1,4 @@
-function findNodes(xpath) {
+function findNodes(xpath): Node[] {
   const result = document.evaluate(
     xpath,
     document.body,
@@ -15,17 +15,10 @@ function findNodes(xpath) {
   return nodes;
 }
 
-function attachListenerToButtons(buttonText, callback) {
-  const nodes = findNodes(
+function findButtons(buttonText) {
+  return findNodes(
     `.//span[contains(text(), '${buttonText}')]/../..//input[not(@disabled)]`,
   );
-  nodes.forEach((node) => {
-    node.addEventListener("click", callback, { capture: true });
-  });
-}
-
-function isCheckoutPage() {
-  return findNodes(`.//h1[contains(text(), 'Checkout')]`).length > 0;
 }
 
 function findOrderTotal() {
@@ -38,13 +31,16 @@ function findOrderTotal() {
   return null;
 }
 
-function getDonationLink() {
-  const total = findOrderTotal();
-  let donation = "";
-  if (total) {
-    donation = String(parseFloat(total) * 0.1);
-  }
-  return `https://secure.actblue.com/donate/alu-ont8election?express_lane=true&amount=${donation}`;
+function isCheckoutPage() {
+  return findNodes(`.//h1[contains(text(), 'Checkout')]`).length > 0;
 }
 
-export { isCheckoutPage, attachListenerToButtons, getDonationLink };
+function getDonationAmount(percentage) {
+  const total = findOrderTotal();
+  if (total) {
+    return parseFloat(total) * percentage;
+  }
+  return 0;
+}
+
+export { findButtons, isCheckoutPage, getDonationAmount };

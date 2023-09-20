@@ -1,4 +1,4 @@
-import { isCheckoutPage } from "./aluSmile";
+import { isCheckoutPage } from "./find";
 
 describe("isCheckoutPage", () => {
   test("returns false when no checkout page header", () => {
