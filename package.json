@@ -7,8 +7,11 @@
 		"lint": "eslint src",
 		"test": "jest",
 		"bundle": "microbundle",
+		"bundle-dev": "microbundle watch",
 		"build": "run-s lint test bundle",
-		"dev": "microbundle watch"
+		"package": "zip alu-smile.zip manifest.json dist/*",
+		"serve": "serve test-page/",
+		"dev": "run-p bundle-dev serve"
 	},
 	"devDependencies": {
 		"@types/jest": "^29.5.4",
@@ -22,6 +25,7 @@
 		"microbundle": "^0.15.1",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^3.0.3",
+		"serve": "^14.2.1",
 		"ts-jest": "^29.1.1",
 		"typescript": "^5.2.2"
 	},
