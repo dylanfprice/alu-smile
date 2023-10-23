@@ -1,5 +1,9 @@
 {
 	"compilerOptions": {
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"jsxFactory": "",
+		"jsxFragmentFactory": "",
+		"jsxImportSource": "preact",
+		"jsx": "react-jsx"
 	}
 }

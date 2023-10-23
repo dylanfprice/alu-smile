@@ -1,19 +1,20 @@
 {
 	"name": "alu-smile",
 	"type": "module",
-	"source": "src/index.ts",
+	"source": "src/index.tsx",
 	"exports": "./dist/alu-smile.modern.mjs",
 	"scripts": {
 		"lint": "eslint src",
 		"test": "jest",
 		"bundle": "microbundle",
-		"bundle-dev": "microbundle watch",
+		"bundle-dev": "npm run bundle watch",
 		"build": "run-s lint test bundle",
 		"package": "zip alu-smile.zip manifest.json dist/*",
 		"serve": "serve test-page/",
 		"dev": "run-p bundle-dev serve"
 	},
 	"devDependencies": {
+		"@preact/signals": "^1.2.1",
 		"@types/jest": "^29.5.4",
 		"@typescript-eslint/eslint-plugin": "^6.6.0",
 		"@typescript-eslint/parser": "^6.6.0",
@@ -24,6 +25,7 @@
 		"jest-environment-jsdom": "^29.6.4",
 		"microbundle": "^0.15.1",
 		"npm-run-all": "^4.1.5",
+		"preact": "^10.18.1",
 		"prettier": "^3.0.3",
 		"serve": "^14.2.1",
 		"ts-jest": "^29.1.1",

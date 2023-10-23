@@ -3,7 +3,8 @@ function findNodes(xpath): Node[] {
     xpath,
     document.body,
     null,
-    XPathResult.ORDERED_NODE_ITERATOR_TYPE,
+    //XPathResult.ORDERED_NODE_ITERATOR_TYPE,
+    XPathResult.ANY_TYPE,
     null,
   );
   const nodes = [];
@@ -17,13 +18,25 @@ function findNodes(xpath): Node[] {
 
 function findButtons(buttonText) {
   return findNodes(
-    `.//span[contains(text(), '${buttonText}')]/../..//input[not(@disabled)]`,
+    `
+      .//span[contains(
+        normalize-space(translate(text(), '\n', ' ')),
+        '${buttonText}')
+      ]/../..//input[not(@disabled)]
+    `,
   );
 }
 
 function findOrderTotal() {
-  const nodes = findNodes(`.//span[contains(text(), 'Order total')]`);
-  const regex = /Order total:\$(?<amount>\d+\.\d+)/;
+  const nodes = findNodes(
+    `
+      .//span[contains(
+        normalize-space(translate(text(), '\n', ' ')),
+        'Order total'
+      )]
+    `,
+  );
+  const regex = /Order\s*total:\$(?<amount>\d+\.\d+)/;
   const orderNode = nodes.find((node) => regex.test(node.textContent));
   if (orderNode) {
     return regex.exec(orderNode.textContent).groups.amount;
