@@ -1,17 +1,19 @@
 {
 	"name": "alu-smile",
 	"type": "module",
-	"source": "src/index.tsx",
-	"exports": "./dist/alu-smile.modern.mjs",
+	"exports": {
+		".": "./dist/alu-smile.modern.mjs",
+		"./options-ui": "./dist/options-ui.modern.mjs"
+	},
 	"scripts": {
 		"lint": "eslint src",
 		"test": "jest",
-		"bundle": "microbundle",
+		"bundle": "microbundle src/*.tsx",
 		"bundle-dev": "npm run bundle watch",
-		"build": "run-s lint test bundle",
-		"package": "zip alu-smile.zip manifest.json dist/*",
 		"serve": "serve test-page/",
-		"dev": "run-p bundle-dev serve"
+		"dev": "run-p bundle-dev serve",
+		"build": "run-s lint test bundle",
+		"package": "zip alu-smile.zip manifest.json dist/* public/*"
 	},
 	"devDependencies": {
 		"@preact/signals": "^1.2.1",

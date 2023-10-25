@@ -1,7 +1,8 @@
 import { render } from "preact";
-import { findButtons, isCheckoutPage, getDonationAmount } from "./find";
-import Checkbox from "./Checkbox";
 import { signal } from "@preact/signals";
+
+import Checkbox from "../components/Checkbox";
+import { findButtons, isCheckoutPage, getDonationAmount } from "./find";
 
 //const DONATION_LINK = `https://secure.actblue.com/donate/alu-ont8election?express_lane=true&amount=`;
 const DONATION_LINK = `https://example.com/donate/alu-ont8election?express_lane=true&amount=`;
@@ -26,7 +27,7 @@ function main() {
       button.parentNode.parentNode.parentNode.appendChild(root);
       render(
         <Checkbox
-          text={`Yes, please donate $${donationAmount.toFixed(
+          label={`Yes, please donate $${donationAmount.toFixed(
             2,
           )} to the Amazon Labor Union`}
           checked={shouldDonate}
@@ -52,4 +53,4 @@ function toggleShouldDonate(shouldDonate) {
   shouldDonate.value = !shouldDonate.value;
 }
 
-main();
+export { main };

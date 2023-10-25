@@ -13,5 +13,9 @@
 				"http://localhost/*"
 			]
 		}
-	]
+	],
+	"options_ui": {
+		"page": "public/options-ui.html",
+		"browser_style": false
+	}
 }
