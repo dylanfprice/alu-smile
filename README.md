@@ -37,3 +37,5 @@ The workflow for making changes is:
 - Edit code, save and it auto rebuilds
 - Reload the extension according to your browser's process (i.e. click the reload button)
 - Reload the checkout page
+
+> :warning: The "Place your order" button on the test page will _not_ send any requests to amazon.com, however it _will_ open the actblue donation page and make a donation if you are logged in. You can avoid this by enabling debug mode in the extension preferences.
