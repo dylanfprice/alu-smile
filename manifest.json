@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "ALU Smile",
 	"version": "1.0",
-	"description": "",
+	"description": "Donate to the Amazon Labor Union when you shop on Amazon.com.",
 	"content_scripts": [
 		{
 			"js": [
