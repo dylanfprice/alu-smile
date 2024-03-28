@@ -3,6 +3,14 @@
 	"name": "ALU Smile",
 	"version": "1.0",
 	"description": "Donate to the Amazon Labor Union when you shop on Amazon.com.",
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "alu-smile@example.com"
+		}
+	},
+	"permissions": [
+		"storage"
+	],
 	"content_scripts": [
 		{
 			"js": [
