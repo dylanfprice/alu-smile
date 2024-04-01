@@ -1,7 +1,7 @@
 import { render } from "preact";
 import { signal } from "@preact/signals";
 
-import Checkbox from "../components/Checkbox";
+import Checkbox from "./Checkbox";
 import { findButtons, isCheckoutPage, getDonationAmount } from "./find";
 
 //const DONATION_LINK = `https://secure.actblue.com/donate/alu-ont8election?express_lane=true&amount=`;
