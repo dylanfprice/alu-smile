@@ -17,9 +17,11 @@
 	},
 	"devDependencies": {
 		"@preact/signals": "^1.2.1",
+		"@testing-library/jest-dom": "^6.4.2",
+		"@testing-library/preact": "^3.2.3",
 		"@types/jest": "^29.5.4",
-		"@typescript-eslint/eslint-plugin": "^6.6.0",
-		"@typescript-eslint/parser": "^6.6.0",
+		"@typescript-eslint/eslint-plugin": "^7.4.0",
+		"@typescript-eslint/parser": "^7.4.0",
 		"eslint": "^8.49.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-prettier": "^5.0.0",
