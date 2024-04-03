@@ -1,17 +1,17 @@
 import { render } from "preact";
 import { signal } from "@preact/signals";
 
+import { getDonationPercent, getDonationUrl } from "../options";
+
 import Checkbox from "./Checkbox";
 import { findButtons, isCheckoutPage, getDonationAmount } from "./find";
 
-//const DONATION_LINK = `https://secure.actblue.com/donate/alu-ont8election?express_lane=true&amount=`;
-const DONATION_LINK = `https://example.com/donate/alu-ont8election?express_lane=true&amount=`;
-
-function main() {
+async function main() {
   console.log("alu-smile loaded");
   const { shouldDonate } = createState();
   if (isCheckoutPage()) {
-    const donationAmount = getDonationAmount(0.1);
+    const donationPercent = await getDonationPercent();
+    const donationAmount = getDonationAmount(donationPercent);
     const buttons = findButtons("Place your order");
     buttons.forEach((button) => {
       button.addEventListener(
@@ -39,8 +39,9 @@ function main() {
   }
 }
 
-function openDonationLink(donationAmount: number) {
-  const donationLink = `${DONATION_LINK}${donationAmount.toFixed(2)}`;
+async function openDonationLink(donationAmount: number) {
+  const donationUrl = await getDonationUrl();
+  const donationLink = `${donationUrl}${donationAmount.toFixed(2)}`;
   window.open(donationLink, "_blank");
 }
 

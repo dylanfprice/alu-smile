@@ -1,16 +1,8 @@
-import { useStorage } from "./useStorage";
-
-const DEFAULT_DONATION_LINK = `https://secure.actblue.com/donate/alu-ont8election?express_lane=true&amount=`;
+import { useDonationPercent, useDonationUrl } from "./options";
 
 function OptionsForm() {
-  const { value: percent, save: savePercent } = useStorage(
-    "donationPercent",
-    10,
-  );
-  const { value: url, save: saveUrl } = useStorage(
-    "donationUrl",
-    DEFAULT_DONATION_LINK,
-  );
+  const { value: percent, save: savePercent } = useDonationPercent();
+  const { value: url, save: saveUrl } = useDonationUrl();
 
   const labelStyle = {
     display: "block",

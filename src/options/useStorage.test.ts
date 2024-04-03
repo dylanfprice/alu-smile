@@ -1,6 +1,7 @@
 import browser from "webextension-polyfill";
-import { useStorage } from "./useStorage";
 import { act, waitFor, renderHook } from "@testing-library/preact";
+
+import { useStorage } from "./useStorage";
 
 jest.mock("webextension-polyfill", () => ({
   __esModule: true,
