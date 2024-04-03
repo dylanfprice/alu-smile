@@ -3,18 +3,14 @@ import { useStorage } from "./useStorage";
 const DEFAULT_DONATION_LINK = `https://secure.actblue.com/donate/alu-ont8election?express_lane=true&amount=`;
 
 function OptionsForm() {
-  const {
-    loading: percentLoading,
-    value: percent,
-    save: savePercent,
-  } = useStorage("donationPercent", 10);
-  const {
-    loading: urlLoading,
-    value: url,
-    save: saveUrl,
-  } = useStorage("donationUrl", DEFAULT_DONATION_LINK);
-
-  const loading = percentLoading || urlLoading;
+  const { value: percent, save: savePercent } = useStorage(
+    "donationPercent",
+    10,
+  );
+  const { value: url, save: saveUrl } = useStorage(
+    "donationUrl",
+    DEFAULT_DONATION_LINK,
+  );
 
   const labelStyle = {
     display: "block",
@@ -34,7 +30,7 @@ function OptionsForm() {
             savePercent(parseFloat((event.target as HTMLInputElement).value))
           }
           style={{ width: "3em" }}
-          disabled={loading}
+          disabled={percent === undefined}
         />
         % of the shopping cart total
       </label>
@@ -47,7 +43,7 @@ function OptionsForm() {
           style={{
             width: "100%",
           }}
-          disabled={loading}
+          disabled={url === undefined}
         />
       </label>
     </form>

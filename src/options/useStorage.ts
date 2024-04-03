@@ -7,22 +7,19 @@ function useStorage(key, default_ = undefined) {
   useEffect(() => {
     const get = async () => {
       const storedValue = await browser.storage.sync.get({ [key]: default_ });
-      console.log("get", storedValue);
       setValue(storedValue[key]);
     };
     get();
   }, []);
-  const save = async (newValue) => {
+  const save = (newValue) => {
     browser.storage.sync.set({
       [key]: newValue,
     });
-    console.log("set", { [key]: newValue });
     setValue(newValue);
   };
   return {
-    loading: value === undefined,
     value,
-    save: value === undefined ? undefined : save,
+    save,
   };
 }
 
