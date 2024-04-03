@@ -1,0 +1,8 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "jest-environment-jsdom",
+  "moduleNameMapper": {
+    "^@testing-library/preact$": "<rootDir>/node_modules/@testing-library/preact/dist/cjs/index.js",
+    "^preact(/(.*)|$)": "preact$1"
+  }
+}
