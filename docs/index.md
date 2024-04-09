@@ -21,4 +21,6 @@ Please file an [issue in github](https://github.com/dylanfprice/alu-smile/issues
 
 # Philosophy
 
-If you are interested in why I wrote this extension you can read more [here]({{ 'philosophy' | relative_url }}).
+Adding a checkbox to the check out page reminds you that Amazon.com is not a machine--there are many real people behind every order. I have found it to be more motivating than donating separately, because beyond giving money you give yourself the opportunity to feel connected to other people and know that you care about their struggles.
+
+If you are interested to read a longer essay I wrote you can do so [here]({{ 'philosophy' | relative_url }}).
