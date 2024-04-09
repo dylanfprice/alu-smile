@@ -39,3 +39,16 @@ The workflow for making changes is:
 - Reload the checkout page
 
 > :warning: The "Place your order" button on the test page will _not_ send any requests to amazon.com, however it _will_ open the actblue donation page and make a donation if you are logged in. You can avoid this by editing the donation url in the extension preferences, e.g. by setting it to https://example.com?amount=.
+
+### Project Site
+
+There is a jekyll site located in the docs/ folder. It follows the standard github pages conventions so you can follow [those docs](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages), but what follows are brief instructions for working on it locally.
+
+First you need ruby and bundler installed as specified [here](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll#prerequisites). Then
+```bash
+cd docs/
+bundle install
+bundle exec jekyll serve
+```
+
+Any changes pushed to main will go live.
