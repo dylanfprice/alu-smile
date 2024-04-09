@@ -4,9 +4,9 @@
 	"version": "1.0",
 	"description": "Donate to the Amazon Labor Union when you shop on Amazon.com.",
 	"icons": {
-		"16": "public/alu-smile-16.png",
-		"48": "public/alu-smile-48.png",
-		"128": "public/alu-smile-128.png"
+		"16": "docs/assets/logos/alu-smile-16.png",
+		"48": "docs/assets/logos/alu-smile-48.png",
+		"128": "docs/assets/logos/alu-smile-128.png"
 	},
 	"browser_specific_settings": {
 		"gecko": {

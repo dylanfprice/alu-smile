@@ -13,7 +13,7 @@
 		"serve": "serve test-page/",
 		"dev": "run-p bundle-dev serve",
 		"build": "run-s lint test bundle",
-		"package": "zip alu-smile.zip manifest.json dist/* public/*"
+		"package": "zip alu-smile.zip manifest.json dist/* public/* docs/assets/logos/*"
 	},
 	"devDependencies": {
 		"@preact/signals": "^1.2.1",
