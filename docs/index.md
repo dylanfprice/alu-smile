@@ -18,3 +18,7 @@ Here's what it looks like in action:
 # Reporting issues
 
 Please file an [issue in github](https://github.com/dylanfprice/alu-smile/issues/new) or email [alu.smile.extension@gmail.com](mailto:alu.smile.extension@gmail.com).
+
+# Philosophy
+
+If you are interested in why I wrote this extension you can read more [here]({{ 'philosophy' | relative_url }}).

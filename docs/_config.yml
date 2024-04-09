@@ -27,8 +27,9 @@ favicon: assets/logos/alu-smile-16.png
 baseurl: "/alu-smile"
 url: "https://dylanfprice.github.io"
 install:
-    firefox: https://example.com
-    chrome: https://example.com
+    chrome: https://chromewebstore.google.com/detail/alu-smile/jbmjgpfkledljjppdmelapakicejheob
+    safari: ""
+    firefox: ""
 
 # Build settings
 theme: jekyll-theme-minimal
