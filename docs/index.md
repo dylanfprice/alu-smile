@@ -7,9 +7,10 @@ layout: default
 2. Set up an ActBlue Express Profile and a Payment Method. You can find these under the Account dropdown in the upper righthand corner after logging in to ActBlue.
 3. Install this extension. The default contribution is 10% of your order total, but you can change this to whatever you like in the extension preferences.
 4. Next time you check out on Amazon.com, a checkbox will show up indicating how much will be donated to the Amazon Labor Union. You can uncheck the box to disable donations for an individual order.
-5. If you've fully set up your ActBlue account, then as soon as you click "Place your order" your donation will be processed and your Amazon order will be submitted. A new tab will open confirming your donation, and your Amazon order confirmation will be available on the original tab.
+5. _The first time you use this extension_: when you click "Place your order" a donation page will open up. If you are not signed in with your ActBlue Express account you will need to do that. Next you will need to select a payment method. Then if you are prompted to choose a donation amount click "Other" to reveal the prefilled amount from your order. Finally, submit the donation. If after submitting the donation you are prompted to sign in, do so.
+6. The next time you use the extension, as soon as you click "Place your order" your donation will immediately be processed and your Amazon order will be submitted. A new tab will open confirming your donation, and your Amazon order confirmation will be available on the original tab.
 
-Here's what it looks like in action:
+Here's what it looks like in action after everything is set up:
 
 <video width="100%" controls muted="true">
     <source src="assets/demo.mp4" type="video/mp4">
