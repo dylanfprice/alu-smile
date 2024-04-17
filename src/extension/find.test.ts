@@ -1,4 +1,99 @@
-import { isCheckoutPage } from "./find";
+import { _test, findButtons, isCheckoutPage } from "./find";
+const { findOrderTotal } = _test;
+
+describe("findButtons", () => {
+  test("returns button based on button text", () => {
+    document.body.innerHTML = `
+      <span id="submitOrderButtonId">
+        <span>
+          <input name="placeYourOrder1" />
+          <span id="submitOrderButtonId-announce">
+            <span>
+              Place your order
+            </span>
+          </span>
+        </span>
+      </span>
+    `;
+    expect(findButtons("Place your order")).toHaveLength(1);
+  });
+  test("returns button even when text has newlines", () => {
+    document.body.innerHTML = `
+      <span id="submitOrderButtonId">
+        <span>
+          <input name="placeYourOrder1" />
+          <span id="submitOrderButtonId-announce">
+            <span>
+              Place    
+              your 
+              order
+            </span>
+          </span>
+        </span>
+      </span>
+    `;
+    expect(findButtons("Place your order")).toHaveLength(1);
+  });
+  test("returns multiple buttons if there is more than one", () => {
+    document.body.innerHTML = `
+      <span id="submitOrderButtonId">
+        <span>
+          <input name="placeYourOrder1" />
+          <span id="submitOrderButtonId-announce">
+            <span>
+              Place your order
+            </span>
+          </span>
+        </span>
+      </span>
+      <span id="submitOrderButtonId">
+          <span>
+            <input name="placeYourOrder1" />
+            <span id="submitOrderButtonId-announce">
+              <span>
+                Place your order
+              </span>
+            </span>
+          </span>
+      </span>
+    `;
+    expect(findButtons("Place your order")).toHaveLength(2);
+  });
+  test("does not return buttons which are disabled", () => {
+    document.body.innerHTML = `
+      <span id="submitOrderButtonId">
+        <span>
+          <input name="placeYourOrder1" disabled />
+          <span id="submitOrderButtonId-announce">
+            <span>
+              Place your order
+            </span>
+          </span>
+        </span>
+      </span>
+    `;
+    expect(findButtons("Place your order")).toHaveLength(0);
+  });
+});
+
+describe("findOrderTotal", () => {
+  test("returns null when no order total", () => {
+    document.body.innerHTML = `
+      <span>
+        Order total:
+      </span>
+    `;
+    expect(findOrderTotal()).toBeNull();
+  });
+  test("returns parsed order total", () => {
+    document.body.innerHTML = `
+      <span>
+        Order total:<span></span>$24.57
+      </span>
+    `;
+    expect(findOrderTotal()).toEqual("24.57");
+  });
+});
 
 describe("isCheckoutPage", () => {
   test("returns false when no checkout page header", () => {

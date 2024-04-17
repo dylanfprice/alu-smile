@@ -56,4 +56,6 @@ function getDonationAmount(percentage) {
   return 0;
 }
 
-export { findButtons, isCheckoutPage, getDonationAmount };
+const _test = { findOrderTotal };
+
+export { _test, findButtons, isCheckoutPage, getDonationAmount };
