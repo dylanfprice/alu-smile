@@ -1,5 +1,5 @@
-import { _test, findButtons, isCheckoutPage } from "./find";
-const { findOrderTotal } = _test;
+import * as find from "./find";
+const { findOrderTotal, findButtons, isCheckoutPage, getDonationAmount } = find;
 
 describe("findButtons", () => {
   test("returns button based on button text", () => {
@@ -88,10 +88,10 @@ describe("findOrderTotal", () => {
   test("returns parsed order total", () => {
     document.body.innerHTML = `
       <span>
-        Order total:<span></span>$24.57
+        Order total:<span></span>$22.22
       </span>
     `;
-    expect(findOrderTotal()).toEqual("24.57");
+    expect(findOrderTotal()).toEqual("22.22");
   });
 });
 
@@ -145,5 +145,20 @@ describe("isCheckoutPage", () => {
       </h1>
     `;
     expect(isCheckoutPage()).toBeTruthy();
+  });
+});
+
+describe("getDonationAmount", () => {
+  let spy;
+  beforeEach(() => {
+    spy = jest.spyOn(find, "findOrderTotal");
+  });
+  test("returns 0 when order total is null", () => {
+    spy.mockReturnValueOnce(null);
+    expect(getDonationAmount(0.5)).toEqual(0);
+  });
+  test("returns percentage of parsed amount when there is an order total", () => {
+    spy.mockReturnValueOnce("22.22");
+    expect(getDonationAmount(0.5)).toEqual(11.11);
   });
 });

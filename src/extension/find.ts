@@ -1,3 +1,5 @@
+import * as find from "./find";
+
 function findNodes(xpath): Node[] {
   const result = document.evaluate(
     xpath,
@@ -49,13 +51,11 @@ function isCheckoutPage() {
 }
 
 function getDonationAmount(percentage) {
-  const total = findOrderTotal();
+  const total = find.findOrderTotal();
   if (total) {
     return parseFloat(total) * percentage;
   }
   return 0;
 }
 
-const _test = { findOrderTotal };
-
-export { _test, findButtons, isCheckoutPage, getDonationAmount };
+export { findOrderTotal, findButtons, isCheckoutPage, getDonationAmount };
