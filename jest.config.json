@@ -3,6 +3,10 @@
   "testEnvironment": "jest-environment-jsdom",
   "moduleNameMapper": {
     "^@testing-library/preact$": "<rootDir>/node_modules/@testing-library/preact/dist/cjs/index.js",
-    "^preact(/(.*)|$)": "preact$1"
-  }
+    "^preact(/(.*)|$)": "preact$1",
+    "^@preact(/(.*)|$)": "@preact$1"
+  },
+  "setupFilesAfterEnv": [
+    "<rootDir>/src/jest-setup.ts"
+  ]
 }
