@@ -5,6 +5,7 @@
 		"jsxFragmentFactory": "",
 		"jsxImportSource": "preact",
 		"jsx": "react-jsx",
-		"target": "ES2018"
+		"target": "ES2018",
+		"module": "nodenext"
 	}
 }
