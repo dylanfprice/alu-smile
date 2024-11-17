@@ -4,6 +4,7 @@
 		"jsxFactory": "",
 		"jsxFragmentFactory": "",
 		"jsxImportSource": "preact",
-		"jsx": "react-jsx"
+		"jsx": "react-jsx",
+		"target": "ES2018"
 	}
 }
