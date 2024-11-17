@@ -77,19 +77,33 @@ describe("findButtons", () => {
 });
 
 describe("findOrderTotal", () => {
-  test("returns null when no order total", () => {
+  test("returns null when no grand-total-price class", () => {
     document.body.innerHTML = `
-      <span>
-        Order total:
-      </span>
+      <table>
+        <td>
+          $22.22
+        </td>
+      </table>
     `;
     expect(findOrderTotal()).toBeNull();
   });
   test("returns parsed order total", () => {
     document.body.innerHTML = `
-      <span>
-        Order total:<span></span>$22.22
-      </span>
+      <table>
+        <td class="grand-total-price">
+          $22.22
+        </td>
+      </table>
+    `;
+    expect(findOrderTotal()).toEqual("22.22");
+  });
+  test("returns parsed order total when multiple classes", () => {
+    document.body.innerHTML = `
+      <table>
+        <td class="a-class grand-total-price b-class">
+          $22.22
+        </td>
+      </table>
     `;
     expect(findOrderTotal()).toEqual("22.22");
   });
@@ -100,7 +114,7 @@ describe("isCheckoutPage", () => {
     document.body.innerHTML = "<h1>Not the page!</h1>";
     expect(isCheckoutPage()).toBeFalsy();
   });
-  test("returns true when checkout page header", () => {
+  test("returns true when normal checkout page header", () => {
     // Copied from actual amazon checkout page.
     document.body.innerHTML = `
       <h1>
@@ -115,6 +129,20 @@ describe("isCheckoutPage", () => {
               )
           </span>
       </h1>
+    `;
+    expect(isCheckoutPage()).toBeTruthy();
+  });
+  test("returns true when new checkout page header", () => {
+    // Copied from https://www.amazon.com/checkout/p/* style page
+    document.body.innerHTML = `
+        <h1>
+            <a href="javascript:void(0)" role="button">
+                Secure checkout
+                <div>
+                    <span></span>
+                </div>
+            </a>
+        </h1>
     `;
     expect(isCheckoutPage()).toBeTruthy();
   });

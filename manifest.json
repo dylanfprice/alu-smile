@@ -23,6 +23,7 @@
 			],
 			"matches": [
 				"https://www.amazon.com/gp/buy/*",
+				"https://www.amazon.com/checkout/*",
 				"http://localhost/*"
 			]
 		}

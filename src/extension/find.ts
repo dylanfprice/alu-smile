@@ -31,14 +31,9 @@ function findButtons(buttonText) {
 
 function findOrderTotal() {
   const nodes = findNodes(
-    `
-      .//span[contains(
-        normalize-space(translate(text(), '\n', ' ')),
-        'Order total'
-      )]
-    `,
+    `//td[contains(concat(' ',normalize-space(@class),' '),' grand-total-price ')]`,
   );
-  const regex = /Order\s*total:\$(?<amount>\d+\.\d+)/;
+  const regex = /\$(?<amount>\d+\.\d+)/;
   const orderNode = nodes.find((node) => regex.test(node.textContent));
   if (orderNode) {
     return regex.exec(orderNode.textContent).groups.amount;
@@ -47,7 +42,10 @@ function findOrderTotal() {
 }
 
 function isCheckoutPage() {
-  return findNodes(`.//h1[contains(text(), 'Checkout')]`).length > 0;
+  return (
+    findNodes(`.//h1[contains(text(), 'Checkout')]`).length > 0 ||
+    findNodes(`.//h1/a[contains(text(), 'checkout')]`).length > 0
+  );
 }
 
 function getDonationAmount(percentage) {
