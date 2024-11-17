@@ -6,6 +6,6 @@
 		"jsxImportSource": "preact",
 		"jsx": "react-jsx",
 		"target": "ES2018",
-		"module": "nodenext"
+		"moduleResolution": "bundler"
 	}
 }
