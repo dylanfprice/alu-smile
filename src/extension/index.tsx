@@ -13,11 +13,6 @@ async function main() {
     const donationPercent = await getDonationPercent();
     const donationAmount = getDonationAmount(donationPercent);
     const buttons = findButtons("Place your order");
-    const observer = new MutationObserver(() => {
-      console.log("mutation observer callback");
-      observer.disconnect();
-      main();
-    });
     buttons.forEach((button) => {
       addClickListener(button, () => {
         if (shouldDonate.value) {
@@ -34,6 +29,12 @@ async function main() {
           onClick={() => toggleShouldDonate(shouldDonate)}
         />,
       );
+    });
+    const observer = new MutationObserver(() => {
+      observer.disconnect();
+      if (document !== undefined) {
+        main();
+      }
     });
     observer.observe(document.body, {
       childList: true,
