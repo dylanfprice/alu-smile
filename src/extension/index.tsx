@@ -14,18 +14,13 @@ async function main() {
     const donationAmount = getDonationAmount(donationPercent);
     const buttons = findButtons("Place your order");
     buttons.forEach((button) => {
-      button.addEventListener(
-        "click",
-        () => {
-          if (shouldDonate.value) {
-            openDonationLink(donationAmount);
-          }
-        },
-        { capture: true },
-      );
-      const root = document.createElement("div");
-      button.parentNode.parentNode.parentNode.appendChild(root);
-      render(
+      addClickListener(button, () => {
+        if (shouldDonate.value) {
+          openDonationLink(donationAmount);
+        }
+      });
+      renderCheckbox(
+        button,
         <Checkbox
           label={`Yes, please donate $${donationAmount.toFixed(
             2,
@@ -33,21 +28,50 @@ async function main() {
           checked={shouldDonate}
           onClick={() => toggleShouldDonate(shouldDonate)}
         />,
-        root,
       );
     });
+    const observer = new MutationObserver(() => {
+      observer.disconnect();
+      if (document !== undefined) {
+        main();
+      }
+    });
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
   }
+}
+
+function addClickListener(button, onClick) {
+  button.removeEventListener("click", onClick, { capture: true });
+  button.addEventListener("click", onClick, { capture: true });
+}
+
+function renderCheckbox(button, checkbox) {
+  const parent: HTMLElement = button.parentNode.parentNode.parentNode;
+  const existingContainers = parent.getElementsByClassName(
+    "alu-smile-donation-checkbox",
+  );
+  for (const existingContainer of existingContainers) {
+    existingContainer.remove();
+  }
+  const container = document.createElement("div");
+  container.classList.add("alu-smile-donation-checkbox");
+  parent.appendChild(container);
+  render(checkbox, container);
+  return container;
+}
+
+function createState() {
+  const shouldDonate = signal(true);
+  return { shouldDonate };
 }
 
 async function openDonationLink(donationAmount: number) {
   const donationUrl = await getDonationUrl();
   const donationLink = `${donationUrl}${donationAmount.toFixed(2)}`;
   window.open(donationLink, "_blank");
-}
-
-function createState() {
-  const shouldDonate = signal(true);
-  return { shouldDonate };
 }
 
 function toggleShouldDonate(shouldDonate) {
