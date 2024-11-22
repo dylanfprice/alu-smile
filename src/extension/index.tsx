@@ -23,7 +23,9 @@ async function main() {
     if (isCheckoutPage()) {
       const buttons = findButtons("Place your order");
       buttons.forEach((button) => {
+        removeClickListener(button, onClick);
         addClickListener(button, onClick);
+        removeCheckbox(button);
         renderCheckbox(
           button,
           <Checkbox
@@ -39,21 +41,37 @@ async function main() {
   };
 
   renderApp();
-  onAddedNodeRun(renderApp);
+  const disconnect = onAddedNodeRun(renderApp);
+  const tearDown = () => {
+    const buttons = findButtons("Place your order");
+    buttons?.forEach((button) => {
+      removeClickListener(button, onClick);
+      removeCheckbox(button);
+    });
+    disconnect();
+  };
+  return tearDown;
+}
+
+function removeClickListener(button, onClick) {
+  button.removeEventListener("click", onClick, { capture: true });
 }
 
 function addClickListener(button, onClick) {
-  button.removeEventListener("click", onClick, { capture: true });
   button.addEventListener("click", onClick, { capture: true });
 }
 
-function renderCheckbox(button, checkbox) {
+function removeCheckbox(button) {
   const parent: HTMLElement = button.parentNode.parentNode.parentNode;
   const existingContainers =
     parent.getElementsByClassName(CONTAINER_CLASS_NAME);
   for (const existingContainer of existingContainers) {
     existingContainer.remove();
   }
+}
+
+function renderCheckbox(button, checkbox) {
+  const parent: HTMLElement = button.parentNode.parentNode.parentNode;
   const container = document.createElement("div");
   container.classList.add(CONTAINER_CLASS_NAME);
   parent.appendChild(container);
@@ -93,6 +111,7 @@ function onAddedNodeRun(func) {
     childList: true,
     subtree: true,
   });
+  return () => observer.disconnect();
 }
 
 export { main };
