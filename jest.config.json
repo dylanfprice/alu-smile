@@ -1,4 +1,6 @@
 {
+  "clearMocks": true,
+  "resetMocks": true,
   "preset": "ts-jest",
   "testEnvironment": "jest-environment-jsdom",
   "moduleNameMapper": {
