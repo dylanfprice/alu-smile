@@ -17,6 +17,11 @@ npm run build
 ```
 This will run linting, tests, and output bundles to the dist/ directory.
 
+To produce a packaged browser extension run:
+```bash
+npm run package
+```
+
 ### Live Testing Environment
 
 To start the live testing environment run:
