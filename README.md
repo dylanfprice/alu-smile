@@ -17,7 +17,7 @@ npm run build
 ```
 This will run linting, tests, and output bundles to the dist/ directory.
 
-To produce a packaged browser extension run:
+After building, you can produce a packaged browser extension by running:
 ```bash
 npm run package
 ```
