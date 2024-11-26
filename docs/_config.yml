@@ -29,7 +29,7 @@ url: "https://dylanfprice.github.io"
 install:
     chrome: https://chromewebstore.google.com/detail/alu-smile/jbmjgpfkledljjppdmelapakicejheob
     safari: ""
-    firefox: ""
+    firefox: https://addons.mozilla.org/addon/alu-smile/
 
 # Build settings
 theme: jekyll-theme-minimal
