@@ -87,7 +87,7 @@ describe("findOrderTotal", () => {
     `;
     expect(findOrderTotal()).toBeNull();
   });
-  test("returns parsed order total", () => {
+  test("returns parsed order total when grand-total-price class", () => {
     document.body.innerHTML = `
       <table>
         <td class="grand-total-price">
@@ -104,6 +104,17 @@ describe("findOrderTotal", () => {
           $22.22
         </td>
       </table>
+    `;
+    expect(findOrderTotal()).toEqual("22.22");
+  });
+  test("returns parsed order total when grand-total-cell class", () => {
+    document.body.innerHTML = `
+      <span>
+        <div class="a-column a-span12 grand-total-cell">
+          <span class="break-word">Order total:</span>
+          $22.22
+        </div>
+      </span>
     `;
     expect(findOrderTotal()).toEqual("22.22");
   });

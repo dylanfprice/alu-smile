@@ -29,10 +29,17 @@ function findButtons(buttonText) {
   );
 }
 
-function findOrderTotal() {
-  const nodes = findNodes(
-    `//td[contains(concat(' ',normalize-space(@class),' '),' grand-total-price ')]`,
+function findByClass(clazz) {
+  return findNodes(
+    `//*[contains(concat(' ',normalize-space(@class),' '), ' ${clazz} ')]`,
   );
+}
+
+function findOrderTotal() {
+  let nodes = findByClass("grand-total-price");
+  if (nodes.length === 0) {
+    nodes = findByClass("grand-total-cell");
+  }
   const regex = /\$(?<amount>\d+\.\d+)/;
   const orderNode = nodes.find((node) => regex.test(node.textContent));
   if (orderNode) {
