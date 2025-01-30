@@ -31,5 +31,11 @@
     "options_ui": {
         "page": "public/options-ui.html",
         "browser_style": false
+    },
+    "action": {},
+    "background": {
+        "scripts": [
+            "./dist/background.modern.mjs"
+        ]
     }
 }

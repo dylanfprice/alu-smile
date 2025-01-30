@@ -1,41 +1,42 @@
 {
-	"name": "alu-smile",
-	"type": "module",
-	"exports": {
-		".": "./dist/alu-smile.modern.mjs",
-		"./options-ui": "./dist/options-ui.modern.mjs"
-	},
-	"scripts": {
-		"clean": "rm -rf dist/",
-		"lint": "eslint src",
-		"test": "jest",
-		"bundle": "microbundle build src/*.tsx",
-		"bundle-dev": "microbundle watch src/*.tsx",
-		"serve": "serve test-page/",
-		"dev": "run-p bundle-dev serve",
-		"build": "run-s clean lint test bundle",
-		"package": "zip alu-smile.zip manifest.json dist/* public/* docs/assets/logos/*"
-	},
-	"devDependencies": {
-		"@eslint/js": "^9.15.0",
-		"@preact/signals": "^1.2.1",
-		"@testing-library/jest-dom": "^6.4.2",
-		"@testing-library/preact": "^3.2.3",
-		"@types/eslint__js": "^8.42.3",
-		"@types/jest": "^29.5.4",
-		"eslint": "^9.14.0",
-		"eslint-config-prettier": "^9.0.0",
-		"eslint-plugin-prettier": "^5.0.0",
-		"jest": "^29.6.4",
-		"jest-environment-jsdom": "^29.6.4",
-		"microbundle": "^0.15.1",
-		"npm-run-all": "^4.1.5",
-		"preact": "^10.18.1",
-		"prettier": "^3.0.3",
-		"serve": "^14.2.1",
-		"ts-jest": "^29.1.1",
-		"typescript": "^5.6.3",
-		"typescript-eslint": "^8.14.0",
-		"webextension-polyfill": "^0.12.0"
-	}
+    "name": "alu-smile",
+    "type": "module",
+    "exports": {
+        ".": "./dist/alu-smile.modern.mjs",
+        "./options-ui": "./dist/options-ui.modern.mjs",
+        "./background": "./dist/background.modern.mjs"
+    },
+    "scripts": {
+        "clean": "rm -rf dist/",
+        "lint": "eslint src",
+        "test": "jest",
+        "bundle": "microbundle build src/*.tsx",
+        "bundle-dev": "microbundle watch src/*.tsx",
+        "serve": "serve test-page/",
+        "dev": "run-p bundle-dev serve",
+        "build": "run-s clean lint test bundle",
+        "package": "zip alu-smile.zip manifest.json dist/* public/* docs/assets/logos/*"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.15.0",
+        "@preact/signals": "^1.2.1",
+        "@testing-library/jest-dom": "^6.4.2",
+        "@testing-library/preact": "^3.2.3",
+        "@types/eslint__js": "^8.42.3",
+        "@types/jest": "^29.5.4",
+        "eslint": "^9.14.0",
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-prettier": "^5.0.0",
+        "jest": "^29.6.4",
+        "jest-environment-jsdom": "^29.6.4",
+        "microbundle": "^0.15.1",
+        "npm-run-all": "^4.1.5",
+        "preact": "^10.18.1",
+        "prettier": "^3.0.3",
+        "serve": "^14.2.1",
+        "ts-jest": "^29.1.1",
+        "typescript": "^5.6.3",
+        "typescript-eslint": "^8.14.0",
+        "webextension-polyfill": "^0.12.0"
+    }
 }
