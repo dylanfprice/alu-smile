@@ -5,8 +5,7 @@ function findNodes(xpath): Node[] {
     xpath,
     document.body,
     null,
-    //XPathResult.ORDERED_NODE_ITERATOR_TYPE,
-    XPathResult.ANY_TYPE,
+    XPathResult.ORDERED_NODE_ITERATOR_TYPE,
     null,
   );
   const nodes = [];
@@ -39,6 +38,12 @@ function findOrderTotal() {
   let nodes = findByClass("grand-total-price");
   if (nodes.length === 0) {
     nodes = findByClass("grand-total-cell");
+  }
+  if (nodes.length === 0) {
+    nodes = findByClass("order-summary-line-definition");
+    if (nodes.length !== 0) {
+      nodes = [nodes[nodes.length - 1]];
+    }
   }
   const regex = /\$(?<amount>\d+\.\d+)/;
   const orderNode = nodes.find((node) => regex.test(node.textContent));

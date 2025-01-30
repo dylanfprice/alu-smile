@@ -118,6 +118,63 @@ describe("findOrderTotal", () => {
     `;
     expect(findOrderTotal()).toEqual("22.22");
   });
+  test("returns parsed order total when order-summary-line-definition class", () => {
+    document.body.innerHTML = `
+      <ul>
+        <li>
+          <div class="order-summary-grid">
+            <div class="order-summary-line-term">
+              <span>Items:</span>
+            </div>
+            <div class="order-summary-line-definition">
+              <span>$15.00</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="order-summary-grid">
+            <div class="order-summary-line-term">
+              <span>Shipping &amp; handling:</span>
+            </div>
+            <div class="order-summary-line-definition">
+              <span>$5.00</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="order-summary-grid">
+            <div class="order-summary-line-term">
+              <span>Total before tax:</span>
+            </div>
+            <div class="order-summary-line-definition">
+              <span>$20.00</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="order-summary-grid">
+            <div class="order-summary-line-term">
+              <span>Estimated tax to be collected:</span>
+            </div>
+            <div class="order-summary-line-definition">
+              <span>$2.22</span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="order-summary-grid">
+            <div class="order-summary-line-term">
+              <span>Order total:</span>
+            </div>
+            <div class="order-summary-line-definition">
+              <span>$22.22</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    `;
+    expect(findOrderTotal()).toEqual("22.22");
+  });
 });
 
 describe("isCheckoutPage", () => {
